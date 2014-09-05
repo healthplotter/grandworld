@@ -26,7 +26,7 @@ ruby, section, summary, time, mark, audio, video {
 /* primary color */		$livegreen:		rgb(119,169,78);
 
 /* secondary color */	$statelygray:	rgb(62,71,64);
-/* secondary color */	$cream:				rgb(24,221,187);
+/* secondary color */	$cream:				rgb(246,224,188);
 /* secondary color */	$softgreen:		rgb(167,167,131);
 
 //////////////////////////////////////////////////////////////////////////
@@ -34,15 +34,52 @@ ruby, section, summary, time, mark, audio, video {
 //////////////////////////////////////////////////////////////////////////
 body {
   font-family: Helvetica, Arial, sans-serif;
-	font-size: 1em;
+	font-size: 1.5em;
 	line-height: 1.6;
 	color: $statelygray;
 	vertical-align: top;
+	background-color: $cream;
+	text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 { color: $livegreen; }
+h1, h2, h3, h4, h5, h6 { color: $earthybrown; }
 
+//////////////////////////////////////////////////////////////////////////
+// MAIN CONTAINER STYLING ////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 .main-container {
-	width: 90%;
+	width: 70%;
 	margin: 0 auto;
 }
+
+.top-logo { margin: 50px; }
+
+.herotext {
+	font-size: 3.25em;
+	line-height: 1.2;
+	color: $livegreen;
+	margin-bottom: 50px;
+}
+
+.coming-soon {
+	font-style: italic;
+	font-size: 2em;
+	color: $earthybrown;
+}
+//////////////////////////////////////////////////////////////////////////
+// 2 COLUMN STYLING //////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+.column-left {
+	width: 45%;
+	float: left;
+	margin-right: 5%;
+	margin-bottom: 50px;
+}
+
+.column-right {
+	width: 45%;
+	float: right;
+	margin-left: 5%;
+	margin-bottom: 50px;
+}
+
