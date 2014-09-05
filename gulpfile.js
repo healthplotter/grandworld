@@ -1,5 +1,5 @@
 'use strict';
-// generated on 2014-09-05 using generator-gulp-webapp 0.1.0
+// generated on 2014-07-09 using generator-gulp-webapp 0.1.0
 
 var gulp = require('gulp');
 
@@ -130,4 +130,15 @@ gulp.task('watch', ['connect', 'serve'], function () {
     gulp.watch('app/scripts/**/*.js', ['scripts']);
     gulp.watch('app/images/**/*', ['images']);
     gulp.watch('bower.json', ['wiredep']);
+});
+
+gulp.task('cname', function() {
+  return gulp.src('app/CNAME')
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('deploy', ['build', 'cname'], function () {
+    return gulp.src('dist')
+        .pipe($.subtree())
+        .pipe($.clean());
 });
