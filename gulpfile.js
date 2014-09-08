@@ -1,7 +1,8 @@
 'use strict';
 // generated on 2014-07-09 using generator-gulp-webapp 0.1.0
 
-var gulp = require('gulp');
+var gulp = require('gulp'),
+		mainBowerFiles = require('main-bower-files');
 
 // load plugins
 var $ = require('gulp-load-plugins')();
@@ -44,17 +45,17 @@ gulp.task('html', ['styles', 'scripts'], function () {
 
 gulp.task('images', function () {
     return gulp.src('app/images/**/*')
-        .pipe($.cache($.imagemin({
+        .pipe($.imagemin({
             optimizationLevel: 3,
             progressive: true,
             interlaced: true
-        })))
+        }))
         .pipe(gulp.dest('dist/images'))
         .pipe($.size());
 });
 
 gulp.task('fonts', function () {
-    return $.bowerFiles()
+    return gulp.src(mainBowerFiles())
         .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
         .pipe($.flatten())
         .pipe(gulp.dest('dist/fonts'))
@@ -132,14 +133,13 @@ gulp.task('watch', ['connect', 'serve'], function () {
     gulp.watch('bower.json', ['wiredep']);
 });
 
-// gulp.task('cname', function() {
-//   return gulp.src('app/CNAME')
-//     .pipe(gulp.dest('dist'));
-// });
+gulp.task('cname', function() {
+  return gulp.src('app/CNAME')
+    .pipe(gulp.dest('dist'));
+});
 
-// gulp.task('deploy', ['build', 'cname'], function () {
-gulp.task('deploy', ['build'], function () {
-  return gulp.src('dist')
-    .pipe($.subtree())
-    .pipe($.clean());
+gulp.task('deploy', ['build', 'cname'], function () {
+    return gulp.src('dist')
+        .pipe($.subtree())
+        .pipe($.clean());
 });
